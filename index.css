@@ -38,6 +38,7 @@
     --pink: #ff3258;
     --white: #f0e9f2;
     --white-1: #e5e5e6da;
+    --blue: #165fceda;
 
 
     --container-max-width: 1180px;
@@ -223,11 +224,37 @@ body:not(.user-is-tabbing) a:focus {
     font-weight: 400;
 }
 
+.btn2 {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 4.2rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid  var(--blue);
+    font-weight: 400;
+}
+
 .btn:focus {
+    outline: none;
+}
+.btn2:focus {
     outline: none;
 }
 
 .btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 100%;
+    background: var(--white);
+    height: 100%;
+    z-index: -1;
+    transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
+}
+
+.btn2::after {
     content: '';
     display: block;
     position: absolute;
@@ -246,8 +273,19 @@ body:not(.user-is-tabbing) a:focus {
     background: var(--pink);
 }
 
+.btn2:hover::after,
+.btn2:focus::after {
+    right: 0;
+    background: var(--blue);
+}
+
 .btn--pink {
     background: var(--pink);
+    transition: all 0.2s;
+}
+
+.btn2--blue {
+    background: var(--blue);
     transition: all 0.2s;
 }
 
@@ -257,6 +295,15 @@ body:not(.user-is-tabbing) a:focus {
 
 .btn--pink:hover,
 .btn--pink:focus {
+    background: transparent;
+}
+
+.btn2--blue::after {
+    display: none;
+}
+
+.btn2--blue:hover,
+.btn2--blue:focus {
     background: transparent;
 }
 
